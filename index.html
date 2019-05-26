@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Robot</title>
+		<style type="text/css">
+			body {
+				background: #000;
+			}
+			canvas {
+				display: block;
+				border: solid 5px #444;
+				margin: 0 auto;
+			}
+			#info {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="1000" height="700"></canvas>
+		<script src="jquery.js"></script>
+		<script src="robot.js"></script>
+<script >
+
+/* Creamos el mapa */
+mapa= new Image()
+mapa.src = "cir2.png";
+
+
+/* Parametros del robot */
+Robot.prototype = {
+	/* x: posicion horizonal (200-800) */
+	x: 670,
+
+	/* y: posicion vertical (200-500) */
+	y: 370,
+
+	/* inclinacion inicial (0-360) */
+	inclinacion: 50,
+
+	/* velocidad inicial (1-4) */
+	velocidad: 2,
+
+};
+
+/* Creamos el robot */
+robot    = new Robot(),
+robot.img.src = 'r2d2.png'; 
+
+/* Creamos el sensor */
+var sensor = new HitMap(mapa);
+
+/* Sonido sensor */
+var sonido= new sound("beep.mp3");
+
+/* Decidimos qué hacer cuando el sensor detecta el borde del mapa */
+function sensor_activo()
+{
+	/* Giramos 90 grados = ángulo recto */
+	robot.girar(90);
+	
+	/* sonido */
+	sonido.play();
+}
+
+/* iniciamos el programa */
+inicio();
+
+
+
+</script>
+	</body>
+</html>
